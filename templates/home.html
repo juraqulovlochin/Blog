@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}Bosh sahifa{% endblock title %}
+{% block content %}
+    {% if user.is_authenticated %}
+        {{ user.username }}
+         <form action="{% url 'logout' %}" method="post">{% csrf_token %}
+            <input type="submit" value="Chiqib ketish">
+        </form>
+    {% else %}
+    <div>
+        <div>
+        <h2>Assalomu alaykum!</h2>
+        <p>Sayt orqali IT sohasidagi eng so'ngi yangiliklar bilan tanishib borishingiz mumkin. O'rgangan ko'nikmalarimni sizlar bilan bo'lishib boraman.</p>
+        <a href="{% url 'article_list' %}">Barcha postlar</a>
+    </div>
+    </div>
+    {% endif %}
+{% endblock content %}
